@@ -1,0 +1,38 @@
+<!DOCTYPE patchbay>
+<patchbay name="audio passthrough" version="0.6.0">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="FMOD Ex App" port="FMOD Ex App:output_FR"/>
+   <input node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Chromium-2" port="Chromium:output_FR"/>
+   <input node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:capture_FL"/>
+   <input node="Chromium input" port="Chromium input:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="FMOD Ex App" port="FMOD Ex App:output_FL"/>
+   <input node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Family 17h/19h HD Audio Controller Analog Stereo [Monitor]" port="ALC257 Analog:monitor_FL"/>
+   <input node="Chromium input" port="Chromium input:input_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:capture_FR"/>
+   <input node="Chromium input" port="Chromium input:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Family 17h/19h HD Audio Controller Analog Stereo [Monitor]" port="ALC257 Analog:monitor_FR"/>
+   <input node="Chromium input" port="Chromium input:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Chromium-2" port="Chromium:output_FL"/>
+   <input node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:playback_FL"/>
+  </item>
+ </items>
+</patchbay>
+

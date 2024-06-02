@@ -1,0 +1,22 @@
+<!DOCTYPE patchbay>
+<patchbay name="bluetooth2" version="0.6.1">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Nixon's M30s" port="Nixon's M30s:output_FL"/>
+   <input node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Nixon's M30s" port="Nixon's M30s:output_FR"/>
+   <input node="Family 17h/19h HD Audio Controller Analog Stereo" port="ALC257 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Chromium" port="Chromium:output_FR"/>
+   <input node="Nixon's M30s" port="Nixon's M30s:input_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Chromium" port="Chromium:output_FL"/>
+   <input node="Nixon's M30s" port="Nixon's M30s:input_FL"/>
+  </item>
+ </items>
+</patchbay>
+
