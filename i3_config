@@ -27,7 +27,8 @@ exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id picom
 # exec_always --no-startup-id barrier
 exec_always --no-startup-id otd-daemon
-exec_always nitrogen --restore &
+#exec_always nitrogen --restore &
+exec --no-startup-id feh --bg-fill -z ~/MyLinuxConfig/walls 
 exec --no-startup-id thinkfan-ui
 ## user password prompt
 exec_always --no-startup-id lxqt-policykit-agent &
