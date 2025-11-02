@@ -80,38 +80,43 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		config = function()
-			require("lspconfig").basedpyright.setup({
-				settings = {
-					basedpyright = {
-						analysis = {
-							typeCheckingMode = "standard",
-							diagnosticMode = "openFilesOnly",
-							inlayHints = {
-								callArgumentNames = true,
+		opts = {
+			settings = {
+				basedpyright = {
+					analysis = {
+						typeCheckingMode = "standard",
+						diagnosticMode = "openFilesOnly",
+						inlayHints = {
+							callArgumentNames = true,
+						},
+					},
+				},
+				lua_ls = {
+					settings = {
+						Lua = {
+							runtime = {
+								version = "Lua 5.3",
+								path = {
+									"?.lua",
+									"?/init.lua",
+									vim.fn.expand("~/.luarocks/share/lua/5.3/?.lua"),
+									vim.fn.expand("~/.luarocks/share/lua/5.3/?/init.lua"),
+									"/usr/share/5.3/?.lua",
+									"/usr/share/lua/5.3/?/init.lua",
+								},
+							},
+							workspace = {
+								library = {
+									vim.fn.expand("~/.luarocks/share/lua/5.3"),
+									"/usr/share/lua/5.3",
+								},
 							},
 						},
 					},
 				},
-			})
-			require("lspconfig").lua_ls.setup({
-				on_init = function(client)
-					if client.workspace_folders then
-						local path = client.workspace_folders[1].name
-						if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-							return
-						end
-					end
-					client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-						runtime = { version = "LuaJIT" },
-						workspace = {
-							checkThirdParty = false,
-							library = { vim.env.VIMRUNTIME },
-						},
-					})
-				end,
-				settings = { Lua = {} },
-			})
+			},
+		},
+		config = function()
 		end,
 	},
 	--completion
@@ -153,13 +158,7 @@ return {
 		end,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			require("mason-lspconfig").setup_handlers({
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-					})
-				end,
-			})
+			vim.lsp.config("*", { capabilities = capabilities })
 		end,
 	},
 }
